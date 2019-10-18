@@ -1,0 +1,60 @@
+
+<mat-card class="position" >
+  <mat-card-title align="middle"> Onboard Form </mat-card-title><br><br>
+  <img align="right" style="height:120px; width:150px" src="assets\images\image-placeholder.png" alt="image">
+  <div class="container">
+    <mat-form-field>
+      <mat-label>Name:</mat-label>
+      <input matInput required class="size" [(ngModel)]="name" name="name">
+    </mat-form-field><br>
+    <mat-form-field>
+      <mat-label>Adress</mat-label>
+      <input matInput type="text" class="size" [(ngModel)]="adress" name="adress">
+    </mat-form-field><br>
+    <mat-label>Gender</mat-label><br><br>
+    <mat-radio-group aria-label="Gender" [(ngModel)]="gender" name="gender">
+      <mat-radio-button value="1">Male</mat-radio-button>
+      &nbsp;
+      <mat-radio-button value="2">Female</mat-radio-button>
+    </mat-radio-group><br><br>
+    <mat-form-field>
+      <mat-label>Phone Number</mat-label>
+      <input matInput type="number" [(ngModel)]="phonenumber" name="phonenumber">
+    </mat-form-field><br><br>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput type="email" [(ngModel)]="email"  name="email" required>
+    </mat-form-field><br><br>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="DOB" [(ngModel)]="dob" name="dob">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field><br><br>
+    <mat-form-field>
+      <mat-label>Choose a class</mat-label>
+      <mat-select [(ngModel)]="class" name="class">
+        <mat-option *ngFor="let food of foods" [value]="food.value">{{food.viewvalue}}</mat-option>
+      </mat-select>
+    </mat-form-field><br><br>
+  </div>
+  <label>Choose document</label><br>
+  <input type="file" style="horiz-align: right"><br><br>
+
+  <button mat-raised-button value="submit"  (click)="addData()">Submit</button>
+</mat-card>
+
+
+<mat-card>
+  <mat-card-content>
+    <div *ngFor="let f of file | async">
+      <p>Name: {{f.name}}</p>
+      <p>Address:{{f.adress}}</p>
+      <p>gender:{{f.gender}}</p>
+      <p>PhoneNumber:{{f.phonenumber}}</p>
+      <p>Email:{{f.email}}</p>
+      <p>DOB:{{f.dob}}</p>
+      <p>Class:{{f.class}}</p>
+    </div>
+  </mat-card-content>
+</mat-card>
+
