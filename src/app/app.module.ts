@@ -8,10 +8,10 @@ import {
   MatButtonModule,
   MatCardModule,
   MatDatepickerModule,
-  MatFormFieldModule,
+  MatFormFieldModule, MatGridListModule,
   MatInputModule,
-  MatNativeDateModule,
-  MatRadioModule, MatSelectModule
+  MatNativeDateModule, MatProgressBarModule,
+  MatRadioModule, MatRippleModule, MatSelectModule, MatToolbarModule
 } from '@angular/material';
 import {FormsModule} from '@angular/forms';
 import {AngularFireModule} from '@angular/fire';
@@ -20,6 +20,7 @@ import {AngularFirestoreModule} from '@angular/fire/firestore';
 import { SignupComponent } from './signup/signup.component';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {firebase, firebaseui, FirebaseUIModule} from 'firebaseui-angular';
+import {AngularFireStorageModule} from '@angular/fire/storage';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -35,7 +36,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
 @NgModule({
   declarations: [
     AppComponent,
-    SignupComponent
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +53,12 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AngularFirestoreModule,
     MatButtonModule,
     AngularFireAuthModule,
-    FirebaseUIModule.forRoot(firebaseUiAuthConfig)
+    FirebaseUIModule.forRoot(firebaseUiAuthConfig),
+    MatToolbarModule,
+    MatRippleModule,
+    MatGridListModule,
+    MatProgressBarModule,
+    AngularFireStorageModule
 
   ],
   providers: [],

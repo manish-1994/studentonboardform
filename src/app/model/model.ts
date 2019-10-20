@@ -2,8 +2,9 @@ export interface Data{
   name: string;
   adress: string;
   gender: string;
-  phonenumber: number;
+  phonenumber: string;
   email: string;
-  dob: number;
+  dob: string;
   class: string;
+  profilepic: string;
 }

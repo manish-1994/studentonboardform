@@ -1,8 +1,10 @@
-<mat-card>
-<div *ngIf="afauth.auth.currentUser">
-  <app-signup></app-signup>
-  <button mat-raised-button (click)="logout()">logout</button>
-</div>
+<mat-card class="color">
+
+  <div *ngIf="afauth.auth.currentUser">
+
+    <app-signup></app-signup>
+
+  </div>
   <div *ngIf="!afauth.auth.currentUser">
     <firebase-ui></firebase-ui>
   </div>

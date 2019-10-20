@@ -1,9 +1,4 @@
 import { Component } from '@angular/core';
-import {AngularFirestore, AngularFirestoreCollection} from '@angular/fire/firestore';
-import {Data} from './model/model';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
-import actions from '@angular/fire/schematics/deploy/actions';
 import {AngularFireAuth} from '@angular/fire/auth';
 
 
@@ -14,8 +9,8 @@ import {AngularFireAuth} from '@angular/fire/auth';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  private pnum: string;
-  private uid: string;
+  pnum: string;
+  uid: string;
 
 
   constructor(public afauth: AngularFireAuth) {
@@ -28,7 +23,5 @@ export class AppComponent {
     });
 
   }
-  logout() {
-    this.afauth.auth.signOut();
-  }
+
 }
