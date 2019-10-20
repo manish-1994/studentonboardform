@@ -1,4 +1,4 @@
-export interface Data{
+export interface Data {
   name: string;
   adress: string;
   gender: string;
@@ -7,4 +7,5 @@ export interface Data{
   dob: string;
   class: string;
   profilepic: string;
+  doc: string;
 }

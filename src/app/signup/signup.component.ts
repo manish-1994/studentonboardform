@@ -53,6 +53,8 @@ export class SignupComponent {
   img: any;
   snapshot: Observable<any>;
   downloadurl: string;
+  downloadurldoc: string;
+  documents: Data['doc'];
 
 
   constructor(public afs: AngularFirestore, public mainAppcomonent: AppComponent, public afauth: AngularFireAuth, public afStorage: AngularFireStorage) {
@@ -79,7 +81,8 @@ export class SignupComponent {
       email: this.email,
       dob: this.dob,
       class: this.class,
-      profilepic: this.downloadurl
+      profilepic: this.downloadurl,
+      documents: this.downloadurldoc
     });
     this.name = '';
     this.adress = '';
@@ -89,6 +92,8 @@ export class SignupComponent {
     this.email = '';
     this.dob = '';
     this.profilepic = '';
+    this.documents = '';
+
 
   }
 
@@ -104,12 +109,29 @@ export class SignupComponent {
     this.uploadProgress = this.task.percentageChanges();
     this.snapshot = this.task.snapshotChanges().pipe(
       tap(console.log),
-      finalize( async () => {
-        this.downloadurl = await this.ref .getDownloadURL().toPromise();
+      finalize(async () => {
+        this.downloadurl = await this.ref.getDownloadURL().toPromise();
         console.log(this.downloadurl);
+        this.profilepic = this.downloadurl;
       })
     );
 
   }
 
+  uploaddoc(event) {
+    const id = Math.random().toString(36).substring(2);
+    this.ref = this.afStorage.ref(id);
+    this.task = this.ref.put(event.target.files[0]);
+    this.uploadState = this.task.snapshotChanges().pipe(map(s => s.state));
+    this.uploadProgress = this.task.percentageChanges();
+    this.snapshot = this.task.snapshotChanges().pipe(
+      tap(console.log),
+      finalize(async () => {
+        this.downloadurldoc = await this.ref.getDownloadURL().toPromise();
+        console.log(this.downloadurldoc);
+        this.documents = this.downloadurldoc;
+      })
+    );
+
+  }
 }

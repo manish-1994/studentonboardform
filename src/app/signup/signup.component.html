@@ -10,24 +10,23 @@
           </mat-toolbar-row>
         </mat-toolbar>
 
+        <div *ngIf="profilepic as url" style="text-align: center">
+          <h3 style="padding-right:30px">Profile Pic</h3>
+          <img style="height: 400px;width: 400px" [src]="url">
+          <a [href]="url" target="_blank" rel="noopener" class="align" >Download me </a>
+        </div>
         <!--<img align="middle" style="height:120px; width:150px; " src="assets\images\image-placeholder.png" alt="image">-->
-        <input  type="file"   (change)="upload($event)" >
+        <input  type="file" accept="png/jpg" (change)="upload($event)" >
 
-        <p>{{img}}</p>
         <div *ngIf="uploadProgress | async as pct">
           <mat-progress-bar mode="determinate"  [value]="pct" max="100" > </mat-progress-bar>
           {{pct | number}}%
         </div>
 
         <div *ngIf="snapshot | async as snap">
-
         </div>
 
-        <div *ngIf="profilepic as url">
-          <h3>results</h3>
-          <img style="height: 400px;width: 400px" [src]="url">
-          <a [href]="url" target="_blank" rel="noopener">Download me </a>
-        </div>
+
 
         <div class="container">
           <mat-form-field>
@@ -67,8 +66,17 @@
             </mat-select>
           </mat-form-field><br><br>
         </div>
+        <div>
         <label>Choose document</label><br>
-        <input type="file" style="horiz-align: right"><br><br>
+        <input type="file" style="horiz-align: right" (change)="uploaddoc($event)"><br><br>
+        </div>
+        <div *ngIf="uploadProgress | async as pct">
+          <mat-progress-bar mode="determinate" [value]="pct" max="100"></mat-progress-bar>
+          {{pct | number}}%
+        </div>
+        <div *ngIf="documents as url">
+          <a [href]="url" target="_blank" rel="noopener">Download Documents</a>
+        </div>
         <div style="text-align: center;">
           <button mat-raised-button value="submit"  class="btn" (click)="addRecord()">Submit</button>
         </div>
