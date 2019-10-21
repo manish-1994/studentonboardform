@@ -1,6 +1,21 @@
 .color{
-  background-color: white;
+  background-color: deepskyblue;
   color:white;
+  margin-top: 100px;
+  margin-left:400px;
+  margin-right:400px;
 }
 
 
+.color1{
+  background-image: url("C:\Users\param\WebstormProjects\design\src\assets\images\school4.jpg");
+  background-repeat: no-repeat;
+  background-attachment: local;
+  background-size:cover;
+  overflow: auto;
+}
+
+.design{
+  background-color:#3498db;
+  overflow: auto;
+}

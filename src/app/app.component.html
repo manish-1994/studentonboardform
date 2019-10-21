@@ -1,11 +1,13 @@
-<mat-card class="color">
-
+<mat-grid-list cols="2" rowHeight="100%">
+  <mat-grid-tile class="color1">
   <div *ngIf="afauth.auth.currentUser">
-
     <app-signup></app-signup>
-
   </div>
   <div *ngIf="!afauth.auth.currentUser">
     <firebase-ui></firebase-ui>
   </div>
-</mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <img  style="width:100%; height:100% " src="assets\images\school.png">;
+  </mat-grid-tile>
+</mat-grid-list>

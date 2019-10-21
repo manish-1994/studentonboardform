@@ -1,7 +1,7 @@
 
 
-    <div class="fit">
-      <mat-card class="position" >
+    <div>
+      <mat-card class="position" align="left">
         <mat-toolbar class="color">
           <mat-toolbar-row>
             <span><h1 align="middle" style="font-size:30px;color: white"> Student Onboard Form </h1></span>
@@ -10,10 +10,10 @@
           </mat-toolbar-row>
         </mat-toolbar>
 
-        <div *ngIf="profilepic as url" style="text-align: center">
+        <div *ngIf="profilepic as url" style="text-align: center; margin-right:20px">
           <h3 style="padding-right:30px">Profile Pic</h3>
-          <img style="height: 400px;width: 400px" [src]="url">
-          <a [href]="url" target="_blank" rel="noopener" class="align" >Download me </a>
+          <img style="height: 400px;width: 400px" [src]="url" >
+          <a [href]="url" target="_blank" rel="noopener" class="align" [download]="profilepic" >Download me </a>
         </div>
         <!--<img align="middle" style="height:120px; width:150px; " src="assets\images\image-placeholder.png" alt="image">-->
         <input  type="file" accept="png/jpg" (change)="upload($event)" >
@@ -31,7 +31,7 @@
         <div class="container">
           <mat-form-field>
             <mat-label >Name:</mat-label>
-            <input matInput   [(ngModel)]="name" name="name" required>
+            <input matInput  [(ngModel)]="name" name="name" required>
           </mat-form-field><br>
           <mat-form-field>
             <mat-label >Adress</mat-label>
