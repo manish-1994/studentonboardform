@@ -38,13 +38,14 @@ export class SignupComponent {
   name: Data['name'];
   adress: Data['adress'];
   gender: Data['gender'];
-  pnum: Data['phonenumber'];
   email: Data['email'];
   dob: Data['dob'];
   class: Data['class'];
   profilepic: Data['profilepic'];
+/*
   mid: string;
-  mpnum: string;
+*/
+  mpnum: Data['phonenumber'];
   myColor = '#00ff00';
   ref: AngularFireStorageReference;
   task: AngularFireUploadTask;
@@ -56,7 +57,7 @@ export class SignupComponent {
   downloadurldoc: string;
   documents: Data['doc'];
 
-
+  // tslint:disable-next-line:max-line-length
   constructor(public afs: AngularFirestore, public mainAppcomonent: AppComponent, public afauth: AngularFireAuth, public afStorage: AngularFireStorage) {
     this.filecollectionref = this.afs.collection<Data>('student');
     this.file = this.filecollectionref.snapshotChanges().pipe(map(actions => {
@@ -66,18 +67,19 @@ export class SignupComponent {
         return {id, ...data};
       });
     }));
-    this.mid = this.mainAppcomonent.uid;
+    /*this.mid = this.mainAppcomonent.uid;
+    this.mpnum = this.mainAppcomonent.pnum;*/
     this.mpnum = this.mainAppcomonent.pnum;
-    console.log('mId:' + this.mid + 'mpnum' + this.mpnum);
+    console.log('Uid:' + this.mainAppcomonent.uid + 'mpnum' + this.mainAppcomonent.pnum);
   }
 
   addRecord() {
 
-    this.afs.collection('store/').doc(this.mid).set({
+    this.afs.collection('student/').doc(this.mainAppcomonent.uid).set({
       name: this.name,
       adress: this.adress,
       gender: this.gender,
-      phonenumber: this.mpnum,
+      phonenumber: this.mainAppcomonent.pnum,
       email: this.email,
       dob: this.dob,
       class: this.class,
@@ -93,8 +95,7 @@ export class SignupComponent {
     this.dob = '';
     this.profilepic = '';
     this.documents = '';
-
-
+    this.logout();
   }
 
   logout() {

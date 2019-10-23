@@ -5,14 +5,15 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: 'AIzaSyDCVtAmT0UaNMIXI9_Vhy-4SCCWnwU70Ek',
-    authDomain: 'angular-5bae4.firebaseapp.com',
-    databaseURL: 'https://angular-5bae4.firebaseio.com',
-    projectId: 'angular-5bae4',
-    storageBucket: 'angular-5bae4.appspot.com',
-    messagingSenderId: '900679780830',
-    appId: '1:900679780830:web:1a99a9ea44632e9c76754f',
-    measurementId: 'G-MKNJK1DYL0'
+    apiKey: 'AIzaSyBnPRE3VkOca77JoQnoOQg27Vo-DfRMKxc',
+    authDomain: 'mysmartschool-bf62d.firebaseapp.com',
+    databaseURL: 'https://mysmartschool-bf62d.firebaseio.com',
+    projectId: 'mysmartschool-bf62d',
+    storageBucket: 'mysmartschool-bf62d.appspot.com',
+    messagingSenderId: '538614696793',
+    appId: '1:538614696793:web:0780c2bdd8d559acd79a48',
+    measurementId: 'G-Y7DX46XF14'
+
   }
 };
 
